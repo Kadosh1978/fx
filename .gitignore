@@ -1,0 +1,65 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Логи
+logs/
+*.log
+
+# Данные и модели (обычно не коммитят — они тяжёлые)
+data/
+models/
+*.pkl
+*.joblib
+*.h5
+*.pt
+*.pth
+*.onnx
+
+# Секреты и конфиги
+.env
+.env.local
+*.key
+secrets.json
+config_local.*
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Devcontainer (если не нужен в репо — оставьте строку, если нужен — удалите)
+# .devcontainer/
+
+# Данные и БД
+data/
+models/
+*.csv
+*.db
+*.sqlite
+*.sqlite3
+*.parquet
+*.feather
+*.h5
+*.hdf5
+*.pkl
+*.joblib
+*.npy
+*.npz
