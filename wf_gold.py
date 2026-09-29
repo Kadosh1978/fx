@@ -61,6 +61,8 @@ EDGE_MARGIN = float(os.getenv("EDGE_MARGIN", "0.03"))
 EDGE_OVER_BASE = float(os.getenv("EDGE_OVER_BASE", "0.03"))
 SHUFFLE = os.getenv("SHUFFLE", "0") == "1"
 SEED = int(os.getenv("SEED", "0"))  # зерно перемешивания меток (для серии проверок)
+OOS_FROM = os.getenv("OOS_FROM", "")
+
 
 SL_ATR = 1.5
 TP_ATR = 2.0
@@ -423,6 +425,10 @@ def main():
         print(f"Баров: {len(df)} | {df['time'].iloc[0]} .. {df['time'].iloc[-1]}\n")
 
         p_long, p_short, b_long, b_short, imp = walk_forward(df)
+        if OOS_FROM:
+            cut = (df["time"] < pd.Timestamp(OOS_FROM, tz="UTC")).values
+            p_long[cut] = np.nan
+            p_short[cut] = np.nan
         trades, equity = backtest(df, p_long, p_short, b_long, b_short)
         results[tf] = trades
 
